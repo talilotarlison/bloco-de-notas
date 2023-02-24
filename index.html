@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloco de Notas</title>
+    <style>
+        #textarea {
+         width:97vw; 
+         height: 90vh;
+         display: block;
+        }
+        header{
+        margin: 2px 0px;
+        }
+        p{
+          font-weight:bold;
+          display: inline;
+        }
+        img{
+          
+           width:15px; 
+          height: 15px;
+        }
+
+        button{
+          padding:5px 5px; 
+        margin: 5px 0px}
+
+        /* links para acesso:
+        
+        https://site112.com/editor-online-html
+
+        https://developer.mozilla.org/pt-BR/docs/Web/CSS/display
+        
+        http://www.leonelcunha.net/formacao/HTML/css/menuhorizontal.html
+        */
+
+        .menu_horizontal {
+        margin: 0;
+        padding: 0;
+        width: auto;
+        height: 20px;
+        }
+        .menu_horizontal ul{
+        list-style: none;
+        }
+        .menu_horizontal > li{
+        width: 65px;
+        padding:0px;
+        margin: 0;
+        position: relative;
+        display: inline;
+        float: left;
+        border-left: #dcdcdc thin solid;
+        }
+        .menu_horizontal > li ul{
+        display: none;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        top: 35px;
+        left: 0;
+        }
+
+        .menu_horizontal > a{
+        display: block;
+        text-decoration: none;
+        padding: 5px;
+        background-color: #dcdcdc;
+        font-family:Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        }
+        .menu_horizontal > li:hover ul, li.over ul{
+        display: block;
+        }
+
+        .menuhorizontal2 li.btnesquerdo{
+        border: none;
+        }
+
+        a{
+          color: black;
+        }	  
+  </style>
+</head>
+<body>
+    <header>
+        <img src="https://img1.gratispng.com/20180511/fle/kisspng-notepad-microsoft-office-5af578f47f7b92.6294394815260367245222.jpg">
+        <p>Bloco de Notas</p>
+    <header>
+      <main>
+            <ul class="menu_horizontal">
+              <li class="btn_esquerdo"><a href="#">Salvar</a></li>
+              <li><a href="#">Editar</a>
+              <ul>
+              <li><a href="#">Texto 1</a></li>
+              <li><a href="#">Texto 2</a></li>
+              <li><a href="#">Texto 3</a></li>
+              </ul>
+              </li>
+              <li><a href="#">Fonte</a>
+              <ul>
+              <li><a href="#">Fonte 1</a></li>
+              <li><a href="#">Fonte 2</a></li>
+              <li><a href="#">Fonte 3</a></li>
+              </ul>
+              </li>
+              <li><a href="#">Exibir</a></li>
+              <li><a href="#">Ajuda</a></li>
+            </ul>
+      </main>
+  <textarea id="textarea" type="textarea"> </textarea>
+  <button id="button">Salvar Arquivo</button> 
+
+    <script>
+        function download(content, fileName, contentType) {
+          var a = document.createElement("a");
+          var file = new Blob([content], {type: contentType});
+          a.href = URL.createObjectURL(file);
+          a.download = fileName;
+          a.click();
+        }
+    
+        var textarea = document.getElementById("textarea");
+        var button = document.getElementById("button");
+    
+        button.addEventListener("click", function() {
+          if( confirm("deseja salvar?")){
+          var content = textarea.value;
+          var fileName = "arquivo.txt";
+          var contentType = "text/plain";
+          download(content, fileName, contentType);
+        }else{alert("cancelado")}
+        });
+    </script>
+</body>
+</html>
